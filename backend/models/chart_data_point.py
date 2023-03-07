@@ -10,3 +10,8 @@ from models.country import Country
 class ChartDataPoint(JSONWizard):
     feature: ChartDataFeature
     country: Country
+
+    def __eq__(self, other):
+        if isinstance(other, ChartDataPoint):
+            return self.feature == other.feature and self.country == other.country
+        return NotImplemented
