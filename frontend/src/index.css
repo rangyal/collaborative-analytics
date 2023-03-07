@@ -5,9 +5,43 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.main {
+  flex: 1;
+}
+
+.sidebar {
+  width: 400px;
+  background-color: white;
+}
+
+.sidebar > * {
+  margin: 20px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.bar[role="button"] {
+  cursor: pointer;
+}
+
+.bar[role="button"]:hover {
+  filter: saturate(5);
+}
+
+.comments > * {
+  margin: 5px 0;
 }
