@@ -27,6 +27,7 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "react-scripts": "5.0.1",
+    "resize-observer-polyfill": "^1.5.1",
     "typescript": "^4.4.2"
   },
   "scripts": {
@@ -39,6 +40,11 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!d3|d3-array|d3-scale|internmap)"
     ]
   },
   "browserslist": {

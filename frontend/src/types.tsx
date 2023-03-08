@@ -1,7 +1,7 @@
 export type ChartDataFeature =
   | "hotdog"
   | "burger"
-  | "sandwitch"
+  | "sandwich"
   | "kebab"
   | "fries"
   | "donut";

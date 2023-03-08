@@ -50,14 +50,15 @@ type SizeProps = {
   height: number;
 };
 
-type ResponsiveChartProps = {
+type BaseChartProps = {
   data: ChartData;
   commentThreads?: CommentThread[];
   onDataPointClick?: (dataPoint: ChartDataPoint) => void;
   containerProps?: Omit<ParentSizeProps, "children">;
 };
 
-type ChartProps = ResponsiveChartProps & SizeProps;
+type ChartProps = BaseChartProps & SizeProps;
+type ResponsiveChartProps = BaseChartProps & Partial<SizeProps>;
 
 const CollaborativeChart = withTooltip<ChartProps, TooltipData>(
   ({
@@ -156,6 +157,7 @@ const CollaborativeChart = withTooltip<ChartProps, TooltipData>(
                             tooltipLeft: left,
                           });
                         }}
+                        data-testid={`bar-${bar.bar.data.country}-${bar.key}`}
                       />
                       {commentThreads &&
                         findCommentThread(commentThreads, {
@@ -172,6 +174,7 @@ const CollaborativeChart = withTooltip<ChartProps, TooltipData>(
                                 0
                               )}px ${Math.max(15 - bar.width, 0)}px)`,
                             }}
+                            data-testid={`comment-marker-${bar.bar.data.country}-${bar.key}`}
                           />
                         )}
                     </Fragment>
@@ -223,16 +226,18 @@ const CollaborativeChart = withTooltip<ChartProps, TooltipData>(
           </div>
         </div>
         {tooltipOpen && tooltipData && (
-          <Tooltip top={tooltipTop} left={tooltipLeft} style={tooltipStyles}>
-            <strong>
-              <span style={{ color: colorScale(tooltipData.key) }}>
-                {tooltipData.key}
-              </span>{" "}
-              in {tooltipData.bar.data.country}
-            </strong>
-            <div style={{ marginTop: "8px" }}>
-              {tooltipData.bar.data[tooltipData.key]}
-            </div>
+          <Tooltip
+            top={tooltipTop}
+            left={tooltipLeft}
+            style={tooltipStyles}
+            role="tooltip"
+            data-testid={`tooltip-${tooltipData.bar.data.country}-${tooltipData.key}`}
+          >
+            <span style={{ color: colorScale(tooltipData.key) }}>
+              {tooltipData.key}
+            </span>{" "}
+            in {tooltipData.bar.data.country}:{" "}
+            <strong>{tooltipData.bar.data[tooltipData.key]}</strong>
             {commentThreads && (
               <div style={{ marginTop: "8px" }}>
                 <small>
@@ -253,12 +258,18 @@ const CollaborativeChart = withTooltip<ChartProps, TooltipData>(
 
 export default function ResponsiveCollaborativeChart({
   containerProps,
+  width,
+  height,
   ...props
 }: ResponsiveChartProps) {
   return (
     <ParentSize {...containerProps}>
-      {({ width, height }) => (
-        <CollaborativeChart width={width} height={height} {...props} />
+      {(parent) => (
+        <CollaborativeChart
+          width={width || parent.width}
+          height={height || parent.height}
+          {...props}
+        />
       )}
     </ParentSize>
   );
