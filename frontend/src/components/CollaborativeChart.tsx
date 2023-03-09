@@ -157,6 +157,7 @@ const CollaborativeChart = withTooltip<ChartProps, TooltipData>(
                             tooltipLeft: left,
                           });
                         }}
+                        className="bar"
                         data-testid={`bar-${bar.bar.data.country}-${bar.key}`}
                       />
                       {commentThreads &&
