@@ -55,7 +55,7 @@ Backend API runs on http://localhost:8000
 type ChartDataFeature =
   | "hotdog"
   | "burger"
-  | "sandwitch"
+  | "sandwich"
   | "kebab"
   | "fries"
   | "donut";
