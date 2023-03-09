@@ -4,7 +4,7 @@ import { ComponentPropsWithoutRef } from "react";
 import { ChartDataFeature } from "../types";
 
 import CollaborativeChart from "./CollaborativeChart";
-import { chartData, commentThreadsData } from "./CollaborativeChart.test.data";
+import { chartData, commentThreadsData } from "../fixtures";
 
 const renderChart = (
   props?: Omit<

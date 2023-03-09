@@ -88,7 +88,7 @@ function App() {
       />
       <Share style={{ position: "fixed", bottom: 10, left: 10 }} />
       {selectedDataPointValue && (
-        <div className="sidebar">
+        <aside className="sidebar">
           <div>
             <button
               type="button"
@@ -109,7 +109,7 @@ function App() {
             <Comments comments={selectedCommentThread.comments} />
           )}
           <NewComment onNewComment={addNewComment} />
-        </div>
+        </aside>
       )}
     </>
   );

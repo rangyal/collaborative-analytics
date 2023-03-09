@@ -1,4 +1,4 @@
-import { ChartData, CommentThread } from "../types";
+import { ChartData, CommentThread } from "./types";
 
 export const chartData = [
   {
@@ -48,3 +48,14 @@ export const commentThreadsData = [
     id: "4a905c4edd684130b8b57886fdacf20a",
   },
 ] as CommentThread[];
+
+export const commentThreadData = {
+  chartDataPoint: { feature: "kebab", country: "BE" },
+  commentsCount: 3,
+  id: "05ea2cb2717d414393fa30b36609c118",
+  comments: [
+    { userName: "Hannah", text: "Döner FTW" },
+    { userName: "Paul", text: "☝️ True" },
+    { userName: "Hugo", text: "+1" },
+  ],
+};

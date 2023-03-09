@@ -1,7 +1,8 @@
 import snakecaseKeys from "snakecase-keys";
 import { ChartData, ChartDataPoint, CommentThread, Comment } from "./types";
 
-const API_URL = "http://localhost:8000";
+// TODO this should come from an environment variable instead
+const API_URL = `${window.location.protocol}//${window.location.hostname}:8000`;
 
 async function fetchJSON(...args: Parameters<typeof fetch>) {
   const response = await fetch(...args);

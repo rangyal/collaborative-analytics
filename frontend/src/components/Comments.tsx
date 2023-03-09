@@ -10,12 +10,12 @@ export default function Comments({ comments }: Props) {
   }
 
   return (
-    <div className="comments">
+    <ul className="comments" style={{ listStyleType: "none", padding: 0 }}>
       {comments.map((comment, index) => (
-        <div key={index}>
+        <li key={index}>
           <strong>{comment.userName}</strong>: {comment.text}
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
